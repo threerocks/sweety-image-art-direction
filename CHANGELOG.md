@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.0.1 - 2026-10-07
+
+### 中文
+
+- 将安装入口移至 `skills/sweety-image-art-direction`，修复安装器在 Git 稀疏检出模式下遗漏 `agents/openai.yaml` 的问题。
+- 更新安装路径，保留两份运行文件的原始内容与手动调用设置。
+
+### English
+
+- Move the install entrypoint to `skills/sweety-image-art-direction` so the installer's sparse Git checkout includes `agents/openai.yaml`.
+- Update installation paths without changing either runtime file or the explicit-only invocation policy.
+
 ## 1.0.0 - 2026-10-07
 
 ### 中文

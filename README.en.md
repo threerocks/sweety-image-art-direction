@@ -37,30 +37,27 @@ Send this to Codex:
 
 ```text
 Use skill-installer to install https://github.com/threerocks/sweety-image-art-direction.
-The skill is at the repository root: path is ., name is sweety-image-art-direction.
+The skill path is skills/sweety-image-art-direction; its name is sweety-image-art-direction.
 Preserve the explicit-only invocation policy in agents/openai.yaml.
 If an installation already exists, verify its source and back it up before updating.
 ```
 
 Invoke `$sweety-image-art-direction` in your next turn after installation. Image-related keywords alone do not activate the skill.
 
-Alternatively, clone into the personal Codex skills directory. These commands assume that the destination does not already exist:
+If the ZIP download fails, ask the installer to use Git mode with these arguments:
 
-```bash
-mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-git clone https://github.com/threerocks/sweety-image-art-direction.git \
-  "${CODEX_HOME:-$HOME/.codex}/skills/sweety-image-art-direction"
+```text
+--repo threerocks/sweety-image-art-direction
+--path skills/sweety-image-art-direction
+--name sweety-image-art-direction
+--method git
 ```
 
-For an installation created by that Git command, update a clean checkout with:
+For manual installation, download the repository and place the entire `skills/sweety-image-art-direction` directory under `${CODEX_HOME:-$HOME/.codex}/skills/`. Keep both `SKILL.md` and `agents/openai.yaml`.
 
-```bash
-git -C "${CODEX_HOME:-$HOME/.codex}/skills/sweety-image-art-direction" pull --ff-only
-```
+For updates, ask the installer to verify the source and back up the existing installation before reinstalling from this repository. Do not assume the installed directory is a Git checkout.
 
-For an installation created by `skill-installer`, ask the installer to reinstall or update it; do not assume that it is a Git checkout.
-
-Other hosts can load the root [SKILL.md](SKILL.md) using their own installation mechanism. Invocation syntax and policy support depend on the host. The instructions are written in Chinese. Without a skill loader, the file can be supplied as conversation instructions.
+Other hosts can load [SKILL.md](skills/sweety-image-art-direction/SKILL.md) using their own installation mechanism. Invocation syntax and policy support depend on the host. The instructions are written in Chinese. Without a skill loader, the file can be supplied as conversation instructions.
 
 The skill itself needs no API key, scripts, packages, or other skills. Generating images requires a capable host and may incur its usual charges. A host without image generation can still provide prompts and visual briefs.
 
@@ -88,7 +85,7 @@ coherent painted shapes and directional strokes, without blurring the whole imag
 or lowering saturation.
 ```
 
-These are usage examples, not claims about verified outputs. The full input template is in [SKILL.md](SKILL.md#可直接复制的专业输入).
+These are usage examples, not claims about verified outputs. The full input template is in [SKILL.md](skills/sweety-image-art-direction/SKILL.md#可直接复制的专业输入).
 
 ## Evaluate the result
 
@@ -104,8 +101,8 @@ Future rule changes belong in this repository. Existing personal installations r
 
 ## Files and license
 
-- [SKILL.md](SKILL.md): complete instructions and input template.
-- [agents/openai.yaml](agents/openai.yaml): Codex UI metadata and explicit-only policy.
+- [SKILL.md](skills/sweety-image-art-direction/SKILL.md): complete instructions and input template.
+- [agents/openai.yaml](skills/sweety-image-art-direction/agents/openai.yaml): Codex UI metadata and explicit-only policy.
 - [CHANGELOG.md](CHANGELOG.md): version history.
 - [LICENSE](LICENSE): MIT, matching the source repository's declared license.
 

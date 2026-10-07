@@ -39,32 +39,29 @@
 
 ```text
 使用 skill-installer 安装 https://github.com/threerocks/sweety-image-art-direction。
-Skill 位于仓库根目录，path 为 .，安装名称为 sweety-image-art-direction。
+Skill 路径为 skills/sweety-image-art-direction，安装名称为 sweety-image-art-direction。
 保留 agents/openai.yaml 中仅手动调用的设置。
 如果已有同名安装，先核对来源并备份，再更新。
 ```
 
 安装后，在下一轮对话中输入 `$sweety-image-art-direction` 调用。题材关键词不会自动触发这个 Skill。
 
-也可以使用 Git 安装到 Codex 的个人 Skill 目录。下面的命令适用于目标目录尚不存在的情况：
+安装器下载 ZIP 失败时，可以要求它使用 Git 模式。安装器参数为：
 
-```bash
-mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-git clone https://github.com/threerocks/sweety-image-art-direction.git \
-  "${CODEX_HOME:-$HOME/.codex}/skills/sweety-image-art-direction"
+```text
+--repo threerocks/sweety-image-art-direction
+--path skills/sweety-image-art-direction
+--name sweety-image-art-direction
+--method git
 ```
 
-通过上述 Git 命令安装的副本，可以在没有本地修改时更新：
+也可以下载仓库，将 `skills/sweety-image-art-direction` 整个目录放入 `${CODEX_HOME:-$HOME/.codex}/skills/`。目录中必须同时保留 `SKILL.md` 和 `agents/openai.yaml`。
 
-```bash
-git -C "${CODEX_HOME:-$HOME/.codex}/skills/sweety-image-art-direction" pull --ff-only
-```
-
-通过 `skill-installer` 安装的副本，应让安装器重新安装或更新；不要假定安装目录是 Git 仓库。
+更新时让安装器核对来源、备份已有安装，再从本仓库安装。不要假定安装目录是 Git 仓库。
 
 ### 其他工具
 
-支持 `SKILL.md` 的工具可以按自身的安装方式加载仓库根目录。调用语法和手动触发策略取决于宿主工具。没有 Skill 加载能力时，可以把 [SKILL.md](SKILL.md) 作为对话指令使用。
+支持 `SKILL.md` 的工具可以按自身的安装方式加载 `skills/sweety-image-art-direction` 目录。调用语法和手动触发策略取决于宿主工具。没有 Skill 加载能力时，可以把 [SKILL.md](skills/sweety-image-art-direction/SKILL.md) 作为对话指令使用。
 
 Skill 不要求 API 密钥、额外脚本、软件包或其他 Skill。生成图片仍需要宿主提供图像生成能力，相关费用由宿主决定。没有生成能力时，Skill 可以交付美术方案和提示词。
 
@@ -97,7 +94,7 @@ Skill 不要求 API 密钥、额外脚本、软件包或其他 Skill。生成图
 请通过完整色块与有方向的笔触修正，不要靠整图模糊或降低饱和度处理。
 ```
 
-这些是使用示例，未声称是已经验证的生成结果。更完整的输入模板见 [SKILL.md](SKILL.md#可直接复制的专业输入)。
+这些是使用示例，未声称是已经验证的生成结果。更完整的输入模板见 [SKILL.md](skills/sweety-image-art-direction/SKILL.md#可直接复制的专业输入)。
 
 ## 效果怎样判断
 
@@ -113,9 +110,9 @@ Skill 不要求 API 密钥、额外脚本、软件包或其他 Skill。生成图
 
 ## 文件与许可
 
-- [SKILL.md](SKILL.md)：完整执行规则与输入模板。
-- [agents/openai.yaml](agents/openai.yaml)：Codex 显示名称、默认提示词与手动调用策略。
+- [SKILL.md](skills/sweety-image-art-direction/SKILL.md)：完整执行规则与输入模板。
+- [agents/openai.yaml](skills/sweety-image-art-direction/agents/openai.yaml)：Codex 显示名称、默认提示词与手动调用策略。
 - [CHANGELOG.md](CHANGELOG.md)：版本记录。
 - [LICENSE](LICENSE)：MIT 许可，沿用原仓库声明的许可类型。
 
-方法来源保留在 `SKILL.md` 中。执行规则已经写入文件，使用时不需要访问来源网页。
+方法来源保留在 Skill 的 `SKILL.md` 中。执行规则已经写入文件，使用时不需要访问来源网页。
